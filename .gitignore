@@ -1,3 +1,5 @@
 *.ncrunch*
 MyFizzBuzz/bin
 MyFizzBuzz/obj
+*.DotSettings*
+*.v11.suo
