@@ -13,43 +13,34 @@ namespace MyFizzBuzz
         }
     }
 
-    [SubjectAttribute(typeof (FizzBuzz), "Number for number")]
-    internal class when_given_a_number
-    {
-        private It will_return_one = () => FizzBuzz.Answer(1).ShouldEqual("1");
-        private It will_return_two = () => FizzBuzz.Answer(2).ShouldEqual("2");
-    }
 
-    [Subject(typeof (FizzBuzz), "Fizz")]
-    internal class when_given_a_number_divisible_by_3
-    {
-        private It will_return_fizz = () => FizzBuzz.Answer(3).ShouldEqual("Fizz");
-    }
-
-    [Subject(typeof (FizzBuzz), "Buzz")]
-    internal class when_given_a_number_divisible_by_5
-    {
-        private It will_return_buzz = () => FizzBuzz.Answer(5).ShouldEqual("Buzz");
-    }
-
-    [Subject(typeof (FizzBuzz), "FizzBuzz")]
-    internal class when_given_a_number_divisible_by_3_and_5
-    {
-        private It will_return_fizz_buzz = () => FizzBuzz.Answer(15).ShouldEqual("FizzBuzz");
-    }
-
-    internal class FizzBuzz
+    public class FizzBuzz
     {
         public static string Answer(int number)
         {
-            if (number%5 == 0 && number%3 == 0)
+            if (FizzBuzzRule(number))
                 return "FizzBuzz";
-            if (number % 5 == 0)
+            if (BuzzRule(number))
                 return "Buzz";
-            else if (number %3 == 0)
+            else if (FizzRule(number))
                 return "Fizz";
             else
                 return number.ToString();
+        }
+
+        public static bool FizzBuzzRule(int number)
+        {
+            return (number%3 == 0 && number%5 == 0);
+        }
+
+        public static bool BuzzRule(int number)
+        {
+            return (number%5 == 0);
+        }
+
+        public static bool FizzRule(int number)
+        {
+            return (number%3 == 0);
         }
     }
 }
