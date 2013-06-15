@@ -15,9 +15,4 @@
             return i%3 == 0;
         }
     }
-
-    public interface IRule
-    {
-        bool Evaluate(int i);
-    }
 }

@@ -2,8 +2,11 @@
 using Machine.Specifications;
 using Rhino.Mocks;
 
+#region ResharperDisable
 // ReSharper disable InconsistentNaming 
 // ReSharper disable CheckNamespace
+// ReSharper disable UnusedMember.Local
+#endregion
 namespace MyFizzBuzz.BuzzRuleTests
 {
     class BuzzRuleSpec : WithFakes

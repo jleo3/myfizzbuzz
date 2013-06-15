@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
-using Machine.Fakes;
+﻿using Machine.Fakes;
 using Machine.Specifications;
 using Rhino.Mocks;
 
+#region ResharperDisable
+
 // ReSharper disable InconsistentNaming 
 // ReSharper disable CheckNamespace
+// ReSharper disable UnusedMember.Local
+
+#endregion
 namespace MyFizzBuzz
 {
     class MyFizzBuzzSpec : WithFakes
@@ -14,7 +18,7 @@ namespace MyFizzBuzz
         protected static IRule BuzzRule;
         protected static MyFizzBuzz MyFizzBuzz;
 
-        private Establish context = () =>
+        Establish context = () =>
             {
                 FizzBuzzRule = An<IRule>();
                 FizzRule = An<IRule>();
@@ -24,40 +28,40 @@ namespace MyFizzBuzz
     }
 
     [Subject(typeof (MyFizzBuzz), "Number for number")]
-    internal class when_the_rules_return_false : MyFizzBuzzSpec
+    class when_the_rules_return_false : MyFizzBuzzSpec
     {
-        private Establish context = () =>
+        Establish context = () =>
             {
                 FizzBuzzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(false);
                 FizzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(false);
                 BuzzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(false);
             };
 
-        private It will_return_one = () => MyFizzBuzz.Answer(1).ShouldEqual("1");
-        private It will_return_two = () => MyFizzBuzz.Answer(2).ShouldEqual("2");
+        It will_return_one = () => MyFizzBuzz.Answer(1).ShouldEqual("1");
+        It will_return_two = () => MyFizzBuzz.Answer(2).ShouldEqual("2");
     }
 
     [Subject(typeof (MyFizzBuzz), "Fizz")]
-    internal class when_number_satisfies_fizz_rule : MyFizzBuzzSpec
+    class when_number_satisfies_fizz_rule : MyFizzBuzzSpec
     {
-        private Establish context = () => FizzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(true);
+        Establish context = () => FizzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(true);
 
-        private It will_return_fizz = () => MyFizzBuzz.Answer(3).ShouldEqual("Fizz");
+        It will_return_fizz = () => MyFizzBuzz.Answer(3).ShouldEqual("Fizz");
     }
 
     [Subject(typeof (MyFizzBuzz), "Buzz")]
-    internal class when_a_number_satisfies_buzz_rule : MyFizzBuzzSpec
+    class when_a_number_satisfies_buzz_rule : MyFizzBuzzSpec
     {
-        private Establish context = () => BuzzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(true);
+        Establish context = () => BuzzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(true);
 
-        private It will_return_buzz = () => MyFizzBuzz.Answer(5).ShouldEqual("Buzz");
+        It will_return_buzz = () => MyFizzBuzz.Answer(5).ShouldEqual("Buzz");
     }
 
     [Subject(typeof (MyFizzBuzz), "MyFizzBuzz")]
-    internal class when_a_number_satisfies_fizzbuzz_rule : MyFizzBuzzSpec
+    class when_a_number_satisfies_fizzbuzz_rule : MyFizzBuzzSpec
     {
-        private Establish context = () => FizzBuzzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(true);
+        Establish context = () => FizzBuzzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(true);
 
-        private It will_return_fizz_buzz = () => MyFizzBuzz.Answer(15).ShouldEqual("FizzBuzz");
+        It will_return_fizz_buzz = () => MyFizzBuzz.Answer(15).ShouldEqual("FizzBuzz");
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="BuzzRuleTests.cs" />
     <Compile Include="FizzBuzzRule.cs" />
     <Compile Include="FizzBuzzRuleTests.cs" />
+    <Compile Include="IRule.cs" />
     <Compile Include="MyFizzBuzzTests.cs" />
     <Compile Include="FizzRule.cs" />
     <Compile Include="FizzRuleTests.cs" />

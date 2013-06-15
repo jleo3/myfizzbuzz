@@ -1,10 +1,4 @@
-﻿// ReSharper disable InconsistentNaming 
-// ReSharper disable CheckNamespace
-
-using System.Collections.Generic;
-using Machine.Specifications;
-
-namespace MyFizzBuzz
+﻿namespace MyFizzBuzz
 {
     class Program
     {
