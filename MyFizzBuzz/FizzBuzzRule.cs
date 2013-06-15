@@ -4,7 +4,7 @@
     {
         public bool Evaluate(int i)
         {
-            throw new System.NotImplementedException();
+            return (i%3 == 0 && i%5 == 0);
         }
     }
 }

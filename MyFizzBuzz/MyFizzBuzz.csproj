@@ -56,7 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuzzRule.cs" />
+    <Compile Include="BuzzRuleTests.cs" />
     <Compile Include="FizzBuzzRule.cs" />
+    <Compile Include="FizzBuzzRuleTests.cs" />
     <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="FizzRule.cs" />
     <Compile Include="FizzRuleTests.cs" />

@@ -1,10 +1,21 @@
 ﻿using System.Collections.Generic;
+using Machine.Fakes;
 using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming 
 // ReSharper disable CheckNamespace
 namespace MyFizzBuzz
 {
+    class MyFizzBuzzSpec : WithFakes
+    {
+        protected static IRule FizzRule;
+
+        private Establish context = () =>
+            {
+                FizzRule = An<IRule>();
+            };
+    }
+
     [Subject(typeof (FizzBuzz), "Number for number")]
     internal class when_given_a_number
     {
@@ -13,16 +24,15 @@ namespace MyFizzBuzz
     }
 
     [Subject(typeof (FizzBuzz), "Fizz")]
-    internal class when_number_satisfies_fizz_rule
+    internal class when_number_satisfies_fizz_rule : MyFizzBuzzSpec
     {
         protected static FizzBuzz FizzBuzz;
-        protected static FizzRule FizzRule;
 
         private Establish context = () =>
             {
-                FizzRule = new FizzRule();
                 FizzBuzz = new FizzBuzz(new List<IRule> {FizzRule});
             };
+
         private It will_return_fizz = () => FizzBuzz.Answer(3).ShouldEqual("Fizz");
     }
 
