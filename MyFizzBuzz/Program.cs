@@ -13,26 +13,25 @@ namespace MyFizzBuzz
         }
     }
 
-    public class FizzBuzz
+    public class MyFizzBuzz
     {
-        private readonly List<IRule> _rules;
+        private readonly IRule _fizzBuzzRule;
+        private readonly IRule _fizzRule;
+        private readonly IRule _buzzRule;
 
-        public FizzBuzz(List<IRule> rules)
+        public MyFizzBuzz(IRule fizzBuzzRule, IRule fizzRule, IRule buzzRule)
         {
-            _rules = rules;
+            _fizzBuzzRule = fizzBuzzRule;
+            _fizzRule = fizzRule;
+            _buzzRule = buzzRule;
         }
 
-        public static string Answer(int number)
+        public string Answer(int number)
         {
-
-            if (number%5 == 0 && number%3 == 0)
-                return "FizzBuzz";
-            if (number % 5 == 0)
-                return "Buzz";
-            else if (number %3 == 0)
-                return "Fizz";
-            else
-                return number.ToString();
+            if (_fizzBuzzRule.Evaluate(number)) return "FizzBuzz";
+            if (_fizzRule.Evaluate(number)) return "Fizz";
+            if (_buzzRule.Evaluate(number)) return "Buzz";
+            return number.ToString();
         }
     }
 }
