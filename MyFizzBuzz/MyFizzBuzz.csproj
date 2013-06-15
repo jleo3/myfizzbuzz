@@ -47,9 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuzzRule.cs" />
-    <Compile Include="FizzBuzzRule.cs" />
-    <Compile Include="FizzRule.cs" />
     <Compile Include="MyFizzBuzzTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

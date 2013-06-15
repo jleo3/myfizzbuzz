@@ -1,10 +1,4 @@
-﻿// ReSharper disable InconsistentNaming 
-// ReSharper disable CheckNamespace
-
-using System.Globalization;
-using Machine.Specifications;
-
-namespace MyFizzBuzz
+﻿namespace MyFizzBuzz
 {
     class Program
     {
@@ -12,7 +6,6 @@ namespace MyFizzBuzz
         {
         }
     }
-
 
     public class FizzBuzz
     {
