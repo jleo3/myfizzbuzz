@@ -1,10 +1,4 @@
-﻿// ReSharper disable InconsistentNaming 
-// ReSharper disable CheckNamespace
-
-using System.Globalization;
-using Machine.Specifications;
-
-namespace MyFizzBuzz
+﻿namespace MyFizzBuzz
 {
     class Program
     {
@@ -14,7 +8,7 @@ namespace MyFizzBuzz
     }
 
 
-    public class FizzBuzz
+    public static class FizzBuzz
     {
         public static string Answer(int number)
         {
@@ -22,10 +16,9 @@ namespace MyFizzBuzz
                 return "FizzBuzz";
             if (BuzzRule(number))
                 return "Buzz";
-            else if (FizzRule(number))
+            if (FizzRule(number))
                 return "Fizz";
-            else
-                return number.ToString();
+            return number.ToString();
         }
 
         public static bool FizzBuzzRule(int number)
