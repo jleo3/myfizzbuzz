@@ -1,6 +1,6 @@
 ﻿namespace MyFizzBuzz
 {
-    public class BuzzRule
+    public class BuzzRule : IRule
     {
         private readonly IRule _fizzBuzzRule;
 
