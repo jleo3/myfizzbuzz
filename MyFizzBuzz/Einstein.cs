@@ -33,6 +33,7 @@ namespace MyFizzBuzz
             Console.WriteLine("[EINSTEIN] Buzz rule: x % 5 == 0");
             Console.ReadKey();
             Console.WriteLine("[EINSTEIN] I need another number and another drink for my foolish little friend!");
+            Console.ReadKey();
         }
 
         private static void AnswerEinstein(MyFizzBuzz myFizzBuzz, int number)

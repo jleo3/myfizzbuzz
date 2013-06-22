@@ -45,7 +45,4 @@ namespace MyFizzBuzz.BuzzRuleTests
 
         private It will_return_false = () => BuzzRule.Evaluate(15).ShouldBeFalse();
     }
-    class BuzzRuleTests
-    {
-    }
 }
