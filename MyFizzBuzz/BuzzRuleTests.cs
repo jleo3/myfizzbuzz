@@ -22,6 +22,13 @@ namespace MyFizzBuzz.BuzzRuleTests
             };
     }
 
+//    [Subject(typeof (BuzzRule), "Square rule")]
+//    class when_given_a_satisfying_square_condition
+//    {
+//
+//        It will_return_true = () => BuzzRule.Evaluate()
+//         
+//    }
     [Subject(typeof (BuzzRule), "Satisfying Condition For Buzz")]
     internal class when_given_a_satisfying_condition : BuzzRuleSpec
     {

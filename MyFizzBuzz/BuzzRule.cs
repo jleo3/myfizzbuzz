@@ -17,13 +17,11 @@ namespace MyFizzBuzz
             var context = new ExpressionContext();
             context.Imports.AddType(typeof(Math));
             context.Variables["x"] = i;
-            var eDynamic = context.CompileDynamic("x % 5");
-            var eGeneric = context.CompileGeneric<int>("x % 5");
+            var eDynamic = context.CompileGeneric<bool>("x % 5 = 0");
 
-            var result = (int)eDynamic.Evaluate();
-            result = eGeneric.Evaluate();
+            var result = eDynamic.Evaluate();
 
-            return (result == 0);
+            return result;
         }
     }
 }
