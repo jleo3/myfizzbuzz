@@ -10,7 +10,6 @@ using Rhino.Mocks;
 namespace MyFizzBuzz.BuzzRuleTests
 {
     class BuzzRuleSpec : WithFakes
-
     {
         protected static BuzzRule BuzzRule;
         protected static IRule FizzBuzzRule;
@@ -27,12 +26,12 @@ namespace MyFizzBuzz.BuzzRuleTests
          
     }
 
-    class when_given_a_satisfying_condition : BuzzRuleSpec
+    class when_given_a_satisfying_condition : ModuloExpSetup
     {
         It will_return_true = () => BuzzRule.Evaluate(5).ShouldBeTrue();
     }
 
-    class when_given_an_unsatisfactory_condition : BuzzRuleSpec
+    class when_given_an_unsatisfactory_condition : ModuloExpSetup
     {
         It will_return_false = () => BuzzRule.Evaluate(2).ShouldBeFalse();
     }
