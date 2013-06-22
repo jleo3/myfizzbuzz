@@ -1,5 +1,5 @@
 *.ncrunch*
 MyFizzBuzz/bin
 MyFizzBuzz/obj
-_NCrunch.*
+_NCrunch*
 *.v11.*
