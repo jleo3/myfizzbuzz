@@ -19,9 +19,16 @@ namespace MyFizzBuzz
             var context = new ExpressionContext();
             context.Imports.AddType(typeof(Math));
             context.Variables["x"] = i;
-            var eDynamic = context.CompileGeneric<bool>(_buzzExpression);
-
-            var result = eDynamic.Evaluate();
+            bool result;
+            try
+            {
+                var eDynamic = context.CompileGeneric<bool>(_buzzExpression);
+                result = eDynamic.Evaluate();
+            }
+            catch (ExpressionCompileException e)
+            {
+                return false;
+            }
 
             return result;
         }
