@@ -4,23 +4,27 @@ namespace MyFizzBuzz
 {
     class Einstein
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var fizzBuzzRule = new FizzBuzzRule();
-            var fizzRule = new FizzRule(fizzBuzzRule);
-            var buzzRule = new BuzzRule(fizzBuzzRule);
-
-            var myFizzBuzz = new MyFizzBuzz(fizzRule, buzzRule, fizzBuzzRule);
+            var myFizzBuzz = CreateMyFizzMuzz();
 
             Console.WriteLine("Gimme a number, Einstein!");
             var number = Convert.ToInt32(Console.ReadLine());
 
-            var next = number;
-            Console.WriteLine("here's your number");
-            Console.Read();
             Console.WriteLine("Next 3:");
-            Console.WriteLine(myFizzBuzz.Answer(number) + ", " + myFizzBuzz.Answer(number + 1) + ", " + myFizzBuzz.Answer(number + 2));
-            Console.ReadLine();
+            Console.WriteLine(myFizzBuzz.Answer(number) + ", " 
+                + myFizzBuzz.Answer(number + 1) + ", " 
+                + myFizzBuzz.Answer(number + 2));
+            Console.ReadKey();
+        }
+
+        private static MyFizzBuzz CreateMyFizzMuzz()
+        {
+            var fizzBuzzRule = new FizzBuzzRule();
+            var fizzRule = new FizzRule(fizzBuzzRule);
+            var buzzRule = new BuzzRule(fizzBuzzRule);
+            var myFizzBuzz = new MyFizzBuzz(fizzBuzzRule, fizzRule, buzzRule);
+            return myFizzBuzz;
         }
     }
 }
