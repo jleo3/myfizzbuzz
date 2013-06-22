@@ -7,7 +7,7 @@
         }
     }
 
-    public class FizzBuzz
+    public static class FizzBuzz
     {
         public static string Answer(int number)
         {
@@ -15,10 +15,9 @@
                 return "FizzBuzz";
             if (BuzzRule(number))
                 return "Buzz";
-            else if (FizzRule(number))
+            if (FizzRule(number))
                 return "Fizz";
-            else
-                return number.ToString();
+            return number.ToString();
         }
 
         public static bool FizzBuzzRule(int number)

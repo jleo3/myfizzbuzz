@@ -1,8 +1,13 @@
 ﻿using Machine.Specifications;
 
+#region ReSharper Disable
+
 // ReSharper disable InconsistentNaming 
 // ReSharper disable CheckNamespace
-// ReSharper disable UnusedMember.Local
+// ReSharper disable UnusedMember.Global
+
+#endregion
+
 namespace MyFizzBuzz
 {
     [Subject(typeof (FizzBuzz), "Number for number")]
