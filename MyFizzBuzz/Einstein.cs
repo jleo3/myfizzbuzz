@@ -10,8 +10,8 @@ namespace MyFizzBuzz
 
             Console.WriteLine("[EINSTEIN] I am Albert Einstein, King of Drinking Games!");
             Console.WriteLine("[EINSTEIN] I challenge you to FizzBuzz!");
-            Console.WriteLine("[EINSTEIN] Fizz rule: x % 3 == 0");
-            Console.WriteLine("[EINSTEIN] Buzz rule: x % 5 == 0");
+            Console.WriteLine("[EINSTEIN] Fizz rule: x % 3 = 0");
+            Console.WriteLine("[EINSTEIN] Buzz rule: x % 5 = 0");
             Console.ReadKey();
 
             Console.WriteLine("[EINSTEIN] We'll take the first number from the bar...");
@@ -29,8 +29,8 @@ namespace MyFizzBuzz
             Console.WriteLine("[EINSTEIN] Gah! Right again!");
             Console.ReadKey();
             Console.WriteLine("[EINSTEIN] Ok, I'm changing the rules for the next round...");
-            Console.WriteLine("[EINSTEIN] Fizz rule: x * x % 2 == 0");
-            Console.WriteLine("[EINSTEIN] Buzz rule: x * x % 7 == 0");
+            Console.WriteLine("[EINSTEIN] Fizz rule: x * x % 2 = 0");
+            Console.WriteLine("[EINSTEIN] Buzz rule: x * x % 3 = 0");
             Console.ReadKey();
             Console.WriteLine("[EINSTEIN] I need another number and another drink for my foolish little friend!");
             Console.ReadKey();
@@ -48,7 +48,7 @@ namespace MyFizzBuzz
         {
             var fizzBuzzRule = new FizzBuzzRule();
             var fizzRule = new FizzRule(fizzBuzzRule);
-            var buzzRule = new BuzzRule(fizzBuzzRule);
+            var buzzRule = new BuzzRule(fizzBuzzRule, "x % 5 = 0");
             var myFizzBuzz = new MyFizzBuzz(fizzBuzzRule, fizzRule, buzzRule);
             return myFizzBuzz;
         }

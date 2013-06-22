@@ -5,10 +5,12 @@ namespace MyFizzBuzz
     public class BuzzRule : IRule
     {
         private readonly IRule _fizzBuzzRule;
+        private readonly string _buzzExpression;
 
-        public BuzzRule(IRule fizzBuzzRule)
+        public BuzzRule(IRule fizzBuzzRule, string buzzExpression)
         {
             _fizzBuzzRule = fizzBuzzRule;
+            _buzzExpression = buzzExpression;
         }
 
         public bool Evaluate(int i)
@@ -17,7 +19,7 @@ namespace MyFizzBuzz
             var context = new ExpressionContext();
             context.Imports.AddType(typeof(Math));
             context.Variables["x"] = i;
-            var eDynamic = context.CompileGeneric<bool>("x % 5 = 0");
+            var eDynamic = context.CompileGeneric<bool>(_buzzExpression);
 
             var result = eDynamic.Evaluate();
 
