@@ -59,15 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuzzRule.cs" />
-    <Compile Include="BuzzRuleTests.cs" />
-    <Compile Include="FizzBuzzRule.cs" />
-    <Compile Include="FizzBuzzRuleTests.cs" />
+    <Compile Include="Rule.cs" />
+    <Compile Include="RuleTests.cs" />
     <Compile Include="IRule.cs" />
     <Compile Include="MyFizzBuzz.cs" />
     <Compile Include="MyFizzBuzzTests.cs" />
-    <Compile Include="FizzRule.cs" />
-    <Compile Include="FizzRuleTests.cs" />
     <Compile Include="Einstein.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

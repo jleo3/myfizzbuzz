@@ -4,12 +4,12 @@ using Ciloci.Flee;
 
 namespace MyFizzBuzz
 {
-    public class BuzzRule : IRule
+    public class Rule : IRule
     {
         private readonly List<string> _expressions;
         private readonly ExpressionContext _context;
 
-        public BuzzRule(List<string> expressions)
+        public Rule(List<string> expressions)
         {
             _expressions = expressions;
             _context = new ExpressionContext();

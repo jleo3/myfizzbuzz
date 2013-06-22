@@ -7,7 +7,6 @@ namespace MyFizzBuzz
     {
         static void Main()
         {
-            var myFizzBuzz = CreateMyFizzMuzz();
 
             Console.WriteLine("[EINSTEIN] I am Albert Einstein, King of Drinking Games!");
             Console.WriteLine("[EINSTEIN] I challenge you to FizzBuzz!");
@@ -15,6 +14,7 @@ namespace MyFizzBuzz
             Console.WriteLine("[EINSTEIN] Buzz rule: x % 5 = 0");
             Console.ReadKey();
 
+            var myFizzBuzz = CreateMyFizzBuzz(new List<string>{"x % 3 = 0", "x % 5 = 0"});
             Console.WriteLine("[EINSTEIN] We'll take the first number from the bar...");
             var round1Num = Convert.ToInt32(Console.ReadLine());
 
@@ -34,6 +34,10 @@ namespace MyFizzBuzz
             Console.WriteLine("[EINSTEIN] Buzz rule: x * x % 3 = 0");
             Console.ReadKey();
             Console.WriteLine("[EINSTEIN] I need another number and another drink for my foolish little friend!");
+            var myNextFizzBuzz = CreateMyFizzBuzz(new List<string>{"x * x % 2 = 0", "x * x % 3 = 0"});
+            var round3Num = Convert.ToInt32(Console.ReadLine());
+            AnswerEinstein(myNextFizzBuzz, round3Num);
+            Console.WriteLine("[EINSTEIN] Doh! Now I see two of you... I'm outmatched!");
             Console.ReadKey();
         }
 
@@ -45,11 +49,11 @@ namespace MyFizzBuzz
                               + myFizzBuzz.Answer(number + 3));
         }
 
-        private static MyFizzBuzz CreateMyFizzMuzz()
+        private static MyFizzBuzz CreateMyFizzBuzz(List<string> expressions)
         {
-            var fizzBuzzRule = new BuzzRule(new List<string>{"x % 3 = 0", "x % 5 = 0"});
-            var fizzRule = new BuzzRule(new List<string> {"x % 3 = 0"});
-            var buzzRule = new BuzzRule(new List<string> {"x % 5 = 0"});
+            var fizzBuzzRule = new Rule(expressions);
+            var fizzRule = new Rule(new List<string> {expressions[0]});
+            var buzzRule = new Rule(new List<string> {expressions[1]});
             var myFizzBuzz = new MyFizzBuzz(fizzBuzzRule, fizzRule, buzzRule);
             return myFizzBuzz;
         }
