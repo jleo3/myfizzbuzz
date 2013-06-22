@@ -13,6 +13,8 @@ namespace MyFizzBuzz.BuzzRuleTests
     {
         protected static BuzzRule BuzzRule;
         protected static List<string> Expressions = new List<string>();
+
+        Cleanup after = () => Expressions.Clear();
     }
 
     [Subject("Traditional FizzBuzz rules")]
