@@ -1,38 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 using Ciloci.Flee;
 
 namespace MyFizzBuzz
 {
     public class BuzzRule : IRule
     {
-        private readonly IRule _fizzBuzzRule;
-        private readonly string _buzzExpression;
+        private readonly List<string> _expressions;
         private readonly ExpressionContext _context;
 
-        public BuzzRule(IRule fizzBuzzRule, string buzzExpression)
+        public BuzzRule(List<string> expressions)
         {
-            _fizzBuzzRule = fizzBuzzRule;
-            _buzzExpression = buzzExpression;
+            _expressions = expressions;
             _context = new ExpressionContext();
             _context.Imports.AddType(typeof(Math));
         }
 
         public bool Evaluate(int i)
         {
-            if (_fizzBuzzRule.Evaluate(i)) return false;
-            _context.Variables["x"] = i;
-            bool result;
-            try
+            foreach (var expression in _expressions)
             {
-                var eDynamic = _context.CompileGeneric<bool>(_buzzExpression);
-                result = eDynamic.Evaluate();
+                _context.Variables["x"] = i;
+                try
+                {
+                    var eDynamic = _context.CompileGeneric<bool>(expression);
+                    var result = eDynamic.Evaluate();
+                    if (!result) return false;
+                }
+                catch (ExpressionCompileException)
+                {
+                    return false;
+                }
             }
-            catch (ExpressionCompileException)
-            {
-                return false;
-            }
-
-            return result;
+            return true;
         }
     }
 }

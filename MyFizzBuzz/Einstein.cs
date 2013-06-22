@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MyFizzBuzz
 {
@@ -48,7 +49,7 @@ namespace MyFizzBuzz
         {
             var fizzBuzzRule = new FizzBuzzRule();
             var fizzRule = new FizzRule(fizzBuzzRule);
-            var buzzRule = new BuzzRule(fizzBuzzRule, "x % 5 = 0");
+            var buzzRule = new BuzzRule(new List<string> { "x % 5 = 0"});
             var myFizzBuzz = new MyFizzBuzz(fizzBuzzRule, fizzRule, buzzRule);
             return myFizzBuzz;
         }

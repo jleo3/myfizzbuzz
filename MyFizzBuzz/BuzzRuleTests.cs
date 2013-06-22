@@ -1,6 +1,6 @@
-﻿using Machine.Fakes;
+﻿using System.Collections.Generic;
+using Machine.Fakes;
 using Machine.Specifications;
-using Rhino.Mocks;
 
 #region ResharperDisable
 // ReSharper disable InconsistentNaming 
@@ -12,18 +12,17 @@ namespace MyFizzBuzz.BuzzRuleTests
     class BuzzRuleSpec : WithFakes
     {
         protected static BuzzRule BuzzRule;
-        protected static IRule FizzBuzzRule;
-
-        Establish context = () => FizzBuzzRule = An<IRule>();
+        protected static List<string> Expressions = new List<string>();
     }
 
     [Subject("Traditional FizzBuzz rules")]
     class ModuloExpSetup : BuzzRuleSpec
     {
-        protected static string ModuloBuzzExp = "x % 5 = 0";
- 
-        Establish context = () => BuzzRule = new BuzzRule(FizzBuzzRule, ModuloBuzzExp);
-         
+        Establish context = () =>
+            {
+                Expressions.Add("x % 5 = 0");
+                BuzzRule = new BuzzRule(Expressions);
+            };
     }
 
     class when_given_a_satisfying_condition : ModuloExpSetup
@@ -36,14 +35,14 @@ namespace MyFizzBuzz.BuzzRuleTests
         It will_return_false = () => BuzzRule.Evaluate(2).ShouldBeFalse();
     }
 
-
     [Subject("Square Expression")]
     class SquareExpSetup : BuzzRuleSpec
     {
-        protected static string SquareBuzzExp = "x * x % 3 = 0";
- 
-        Establish context = () => BuzzRule = new BuzzRule(FizzBuzzRule, SquareBuzzExp);
-        
+        Establish context = () =>
+            {
+                Expressions.Add("x * x % 3 = 0");
+                BuzzRule = new BuzzRule(Expressions);
+            };
     }
 
     class when_given_a_satisfying_square_condition : SquareExpSetup
@@ -56,13 +55,13 @@ namespace MyFizzBuzz.BuzzRuleTests
         It will_return_false = () => BuzzRule.Evaluate(2).ShouldBeFalse();
     }
 
-    [Subject(typeof (BuzzRule), "Conflicts with BuzzBuzz rule")]
+    [Subject("Satisfies two rules")]
     class when_satisfactory_condition_conflicts_with_fizz_buzz : BuzzRuleSpec
     {
         Establish context = () =>
             {
-                FizzBuzzRule.WhenToldTo(x => x.Evaluate(Arg<int>.Is.Anything)).Return(true);
-                BuzzRule = new BuzzRule(FizzBuzzRule, "x % 5 = 0");
+                Expressions = new List<string> { "x % 2 = 0", "x % 5 = 0" };
+                BuzzRule = new BuzzRule(Expressions);
             };
 
         It will_return_false = () => BuzzRule.Evaluate(15).ShouldBeFalse();
@@ -71,9 +70,11 @@ namespace MyFizzBuzz.BuzzRuleTests
     [Subject(typeof (BuzzRule), "Invalid Expression")]
     class when_evaluating_an_invalid_expression : BuzzRuleSpec
     {
-        protected static string ModuloBuzzExp = "x BLARGH 5 = 0";
- 
-        Establish context = () => BuzzRule = new BuzzRule(FizzBuzzRule, ModuloBuzzExp);
+        Establish context = () =>
+            {
+                Expressions.Add("x BLARGH 3 = 0");
+                BuzzRule = new BuzzRule(Expressions);
+            };
 
         private It will_return_faluse = () => BuzzRule.Evaluate(11).ShouldBeFalse();
     }
