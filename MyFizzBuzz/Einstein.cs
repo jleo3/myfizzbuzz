@@ -29,10 +29,15 @@ namespace MyFizzBuzz
             Console.WriteLine("[EINSTEIN] Gah! Right again!");
             Console.ReadKey();
             Console.WriteLine("[EINSTEIN] Ok, I'm changing the rules for the next round...");
-            Console.WriteLine("[EINSTEIN] Fizz rule: x % 3 == 0");
-            Console.WriteLine("[EINSTEIN] Buzz rule: x % 5 == 0");
+            Console.WriteLine("[EINSTEIN] Fizz rule: x * x % 2 == 0");
+            Console.WriteLine("[EINSTEIN] Buzz rule: x * x % 3 == 0");
             Console.ReadKey();
             Console.WriteLine("[EINSTEIN] I need another number and another drink for my foolish little friend!");
+            var round3Num = Convert.ToInt32(Console.ReadLine());
+            AnswerEinstein(myFizzBuzz, round3Num);
+            Console.WriteLine("[EINSTEIN] Afraid not. Start drinking!");
+            Console.WriteLine("[EINSTEIN] Care to try again?");
+            Console.ReadKey();
         }
 
         private static void AnswerEinstein(MyFizzBuzz myFizzBuzz, int number)
