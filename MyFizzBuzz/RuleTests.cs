@@ -80,4 +80,12 @@ namespace MyFizzBuzz.BuzzRuleTests
 
         private It will_return_faluse = () => Rule.Evaluate(11).ShouldBeFalse();
     }
+
+  
+    class when_poking_tiger_with_stick : RuleSpec
+    {
+        Behaves_like<when_evaluating_an_invalid_expression> foobar;
+        It should_look_very_mean;
+     
+    }
 }
